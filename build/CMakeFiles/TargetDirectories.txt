@@ -1,0 +1,3 @@
+/home/aritra/Desktop/OptimisingDepthAnythingV2/build/CMakeFiles/depth_pipeline.dir
+/home/aritra/Desktop/OptimisingDepthAnythingV2/build/CMakeFiles/edit_cache.dir
+/home/aritra/Desktop/OptimisingDepthAnythingV2/build/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,20 @@
+[
+{
+  "directory": "/home/aritra/Desktop/OptimisingDepthAnythingV2/build",
+  "command": "/usr/bin/g++  -I/home/aritra/Desktop/OptimisingDepthAnythingV2/Depth-Anything-V2/DepthAnythingCPP/include -I/home/aritra/Desktop/OptimisingDepthAnythingV2/Depth-Anything-V2/DepthAnythingCPP/onnxruntime-linux-x64-1.18.0/include -isystem /usr/include/opencv4  -O3 -march=native -mavx2 -mfma -pthread -g -std=gnu++23 -o CMakeFiles/depth_pipeline.dir/src/main.cpp.o -c /home/aritra/Desktop/OptimisingDepthAnythingV2/Depth-Anything-V2/DepthAnythingCPP/src/main.cpp",
+  "file": "/home/aritra/Desktop/OptimisingDepthAnythingV2/Depth-Anything-V2/DepthAnythingCPP/src/main.cpp",
+  "output": "CMakeFiles/depth_pipeline.dir/src/main.cpp.o"
+},
+{
+  "directory": "/home/aritra/Desktop/OptimisingDepthAnythingV2/build",
+  "command": "/usr/bin/g++  -I/home/aritra/Desktop/OptimisingDepthAnythingV2/Depth-Anything-V2/DepthAnythingCPP/include -I/home/aritra/Desktop/OptimisingDepthAnythingV2/Depth-Anything-V2/DepthAnythingCPP/onnxruntime-linux-x64-1.18.0/include -isystem /usr/include/opencv4  -O3 -march=native -mavx2 -mfma -pthread -g -std=gnu++23 -o CMakeFiles/depth_pipeline.dir/src/ImageProcessor.cpp.o -c /home/aritra/Desktop/OptimisingDepthAnythingV2/Depth-Anything-V2/DepthAnythingCPP/src/ImageProcessor.cpp",
+  "file": "/home/aritra/Desktop/OptimisingDepthAnythingV2/Depth-Anything-V2/DepthAnythingCPP/src/ImageProcessor.cpp",
+  "output": "CMakeFiles/depth_pipeline.dir/src/ImageProcessor.cpp.o"
+},
+{
+  "directory": "/home/aritra/Desktop/OptimisingDepthAnythingV2/build",
+  "command": "/usr/bin/g++  -I/home/aritra/Desktop/OptimisingDepthAnythingV2/Depth-Anything-V2/DepthAnythingCPP/include -I/home/aritra/Desktop/OptimisingDepthAnythingV2/Depth-Anything-V2/DepthAnythingCPP/onnxruntime-linux-x64-1.18.0/include -isystem /usr/include/opencv4  -O3 -march=native -mavx2 -mfma -pthread -g -std=gnu++23 -o CMakeFiles/depth_pipeline.dir/src/DepthModel.cpp.o -c /home/aritra/Desktop/OptimisingDepthAnythingV2/Depth-Anything-V2/DepthAnythingCPP/src/DepthModel.cpp",
+  "file": "/home/aritra/Desktop/OptimisingDepthAnythingV2/Depth-Anything-V2/DepthAnythingCPP/src/DepthModel.cpp",
+  "output": "CMakeFiles/depth_pipeline.dir/src/DepthModel.cpp.o"
+}
+]
