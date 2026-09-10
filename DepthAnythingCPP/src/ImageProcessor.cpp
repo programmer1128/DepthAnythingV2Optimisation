@@ -5,6 +5,42 @@
 #include <vector>
 #include <iostream>
 
+cv::Mat ImageProcessor::applyCLAHE(const cv::Mat& src) 
+{
+    // 1. Convert BGR to CIE L*a*b* color space
+    cv::Mat lab_img;
+    cv::cvtColor(src, lab_img, cv::COLOR_BGR2LAB);
+
+    // 2. Split L*a*b* image into 3 individual channels (L, a, b)
+    std::vector<cv::Mat> lab_planes(3);
+    cv::split(lab_img, lab_planes);
+
+    // --- GEOTIFF ADAPTIVE CONFIGURATION ---
+    // Target ~64x64 pixels per tile for fine terrain detail
+    const int target_tile_pixels = 64;
+    
+    // Dynamically calculate grid dimension (ensuring a minimum 8x8 grid)
+    int grid_x = std::max(8, src.cols / target_tile_pixels);
+    int grid_y = std::max(8, src.rows / target_tile_pixels);
+
+    // Use a conservative clip limit (1.2) to prevent amplifying satellite/aerial noise
+    const double clip_limit = 1.2;
+    // -------------------------------------
+
+    // 3. Create CLAHE with dynamic grid size & adjusted clip limit
+    cv::Ptr<cv::CLAHE> clahe = cv::createCLAHE(clip_limit, cv::Size(grid_x, grid_y));
+    clahe->apply(lab_planes[0], lab_planes[0]);
+
+    // 4. Merge updated L channel back with original a & b channels
+    cv::merge(lab_planes, lab_img);
+
+    // 5. Convert back to BGR color space for downstream processing
+    cv::Mat enhanced_bgr;
+    cv::cvtColor(lab_img, enhanced_bgr, cv::COLOR_LAB2BGR);
+
+    return enhanced_bgr;
+}
+
 void ImageProcessor::saveResizedDepthToBin(const float* raw_depth, int orig_w, int orig_h, const std::string& filepath) 
 {
      //Wrap the 518x518 raw float array into an OpenCV float matrix
@@ -96,6 +132,9 @@ void ImageProcessor::processRowSlice(const cv::Mat& rgb_img, float* r_plane, flo
 
 void ImageProcessor::preprocess(const cv::Mat& src, std::vector<float>& dst_tensor) 
 {
+     // High-res GeoTIFF is passed here -> applyCLAHE calculates dynamic grid size based on full resolution
+    cv::Mat enhanced_src = applyCLAHE(src);
+     
     cv::Mat resized, rgb;
     cv::resize(src, resized, cv::Size(TARGET_WIDTH, TARGET_HEIGHT), 0, 0, cv::INTER_CUBIC);
     cv::cvtColor(resized, rgb, cv::COLOR_BGR2RGB);
