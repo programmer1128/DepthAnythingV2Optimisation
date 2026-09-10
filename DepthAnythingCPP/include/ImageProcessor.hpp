@@ -17,6 +17,8 @@ public:
    static void saveResizedDepthToBin(const float* raw_depth, int orig_w, int orig_h, const std::string& filepath);
 
 private:
+    // Helper function: Applies CLAHE to the lightness channel in CIE L*a*b* space
+    static cv::Mat applyCLAHE(const cv::Mat& src);
     // Worker function: processes a slice of rows on a dedicated thread
     static void processRowSlice(const cv::Mat& rgb_img, float* r_plane, float* g_plane, float* b_plane, int start_row, int end_row);
 };
