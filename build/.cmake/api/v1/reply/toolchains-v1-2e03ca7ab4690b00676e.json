@@ -39,7 +39,7 @@
 					]
 				},
 				"path" : "/usr/bin/g++",
-				"version" : "16.1.1"
+				"version" : "16.2.1"
 			},
 			"language" : "CXX",
 			"sourceFileExtensions" : 
